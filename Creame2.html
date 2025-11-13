@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Website | Interior Design Studio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (Embedded) -->
+  <style>
+    /* Cream & Dusty Rose Sophisticated Theme */
+
+    /* ---------- VARIABLES ---------- */
+    :root {
+      --bg-cream: #F8F5F0;
+      --bg-light: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --accent: #C88C9E;
+      --accent-dark: #B07A8B;
+      --text-dark: #2C2C2C;
+      --text-muted: #6B6B6B;
+      --text-light: #FFFFFF;
+      --border-light: rgba(200, 140, 158, 0.2);
+      --shadow: rgba(0, 0, 0, 0.08);
+      --shadow-hover: rgba(0, 0, 0, 0.12);
+      --radius: 12px;
+      --max-width: 1200px;
+      --transition: all 0.3s ease;
+    }
+
+    /* ---------- GLOBAL ---------- */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(248, 245, 240, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-dark);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(248, 245, 240, 0.4),
+        rgba(248, 245, 240, 0.7)
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--text-dark);
+      max-width: 800px;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero .title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      color: var(--text-dark);
+      text-shadow: 0 2px 10px rgba(248, 245, 240, 0.8);
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      max-width: 600px;
+      text-shadow: 0 2px 8px rgba(248, 245, 240, 0.8);
+      font-weight: 500;
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: var(--text-light);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(200, 140, 158, 0.3);
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(200, 140, 158, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--text-light);
+    }
+
+    /* ---------- SECTIONS ---------- */
+    .section {
+      padding: 6rem 0;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-content {
+      width: 90%;
+      max-width: var(--max-width);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about p {
+      max-width: 700px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      min-height: 380px;
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    .service-card:hover::before {
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px var(--shadow-hover);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: rgba(200, 140, 158, 0.1);
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+    }
+
+    .service-card h3 {
+      color: var(--text-dark);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0 0 1.5rem 0;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .service-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .service-features li {
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .service-cta {
+      margin-top: auto;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .service-cta:hover {
+      transform: translateX(5px);
+    }
+
+    /* ---------- PORTFOLIO ---------- */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 350px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .portfolio-overlay h3 {
+      margin: 0 0 0.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+    }
+
+    .portfolio-overlay p {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      text-align: left;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      gap: 1rem;
+      color: var(--text-dark);
+    }
+
+    .faq-question:hover {
+      background: rgba(200, 140, 158, 0.05);
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      transition: var(--transition);
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: var(--transition);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      max-height: 500px;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      text-align: left;
+    }
+
+    .contact-form label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      padding: 1rem;
+      border-radius: var(--radius);
+      font-family: inherit;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(200, 140, 158, 0.2);
+    }
+
+    .contact-form button {
+      align-self: center;
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--bg-light);
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-inner {
+      width: 90%;
+      max-width: var(--max-width);
+      text-align: center;
+    }
+
+    .footer p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(248, 245, 240, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: var(--transition);
+        z-index: 999;
+        gap: 0;
+        border-bottom: 1px solid var(--border-light);
+      }
+      
+      .nav.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      .nav a {
+        margin: 0;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--border-light);
+        width: 100%;
+        text-align: center;
+        color: var(--text-dark);
+      }
+      
+      .nav a:last-child {
+        border-bottom: none;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section {
+        padding: 4rem 0;
+      }
+      
+      .btn-container {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .service-card {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info,
+      .contact-form {
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-container {
+        padding: 1rem 0;
+      }
+      
+      .logo {
+        font-size: 1.3rem;
+      }
+      
+      .hero .title {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+      
+      .hero .subtitle {
+        font-size: 1rem;
+      }
+      
+      .service-card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="#top" class="logo">Demo Website</a>
+      
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      
+      <nav class="nav" id="nav">
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="https://cdn.prod.website-files.com/60d05f9e84aca7372c1b1304%2F684680577f6a3ae6079ccda3_elliot_james_residential_villa_jumeirah_island_glimpse%20%281080p%29-transcode.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-content">
+      <h1 class="title">Demo Website</h1>
+      <p class="subtitle">✨ Curating timeless interiors with elegant sophistication ✨</p>
+      <div class="btn-container">
+        <a href="#portfolio" class="btn">View Our Work 🎨</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch 📩</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="section-content">
+      <h2 class="section-title">About Us 🏛️</h2>
+      <p class="section-subtitle">We transform spaces into <span class="highlight">emotional experiences</span> that resonate with your soul</p>
+      <p>
+        We are a Dubai-based interior design studio specializing in creating elegant, luxurious spaces that balance sophistication and comfort. 
+        Our approach blends natural materials, refined palettes, and architectural detailing to craft interiors that inspire.
+      </p>
+      <p>
+        With over a decade of experience, we've perfected the art of creating spaces that tell stories. Each project is a unique journey 
+        where we blend aesthetics with functionality to create environments that not only look stunning but feel like home. 🏡
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section services">
+    <div class="section-content">
+      <h2 class="section-title">Our Services 🛠️</h2>
+      <p class="section-subtitle">Comprehensive design solutions tailored to your unique vision and lifestyle</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>Interior Design</h3>
+          <p>Complete design solutions from concept to completion, creating spaces that reflect your personality and enhance your lifestyle.</p>
+          <ul class="service-features">
+            <li>Custom furniture design & selection</li>
+            <li>Color palette & material selection</li>
+            <li>Lighting design & fixture selection</li>
+            <li>Art & accessory curation</li>
+            <li>3D visualization & mood boards</li>
+          </ul>
+          <a href="#contact" class="service-cta">Start Your Project →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📐</div>
+          <h3>Space Planning</h3>
+          <p>Optimize your space for maximum functionality, flow, and aesthetic appeal with intelligent layout solutions.</p>
+          <ul class="service-features">
+            <li>Furniture layout optimization</li>
+            <li>Traffic flow analysis</li>
+            <li>Storage solutions & organization</li>
+            <li>Multi-functional space design</li>
+            <li>Accessibility & ergonomic planning</li>
+          </ul>
+          <a href="#contact" class="service-cta">Optimize Your Space →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💡</div>
+          <h3>Design Consultation</h3>
+          <p>Expert guidance to help you make informed decisions about your space, materials, and design direction.</p>
+          <ul class="service-features">
+            <li>Material & finish selection</li>
+            <li>Color scheme development</li>
+            <li>Furniture & decor recommendations</li>
+            <li>Lighting strategy consultation</li>
+            <li>Budget planning & prioritization</li>
+          </ul>
+          <a href="#contact" class="service-cta">Get Expert Advice →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>Project Management</h3>
+          <p>Seamless execution from concept to completion, ensuring your project stays on time and within budget.</p>
+          <ul class="service-features">
+            <li>Contractor coordination & management</li>
+            <li>Budget tracking & cost control</li>
+            <li>Timeline management & scheduling</li>
+            <li>Quality control & site supervision</li>
+            <li>Vendor & supplier coordination</li>
+          </ul>
+          <a href="#contact" class="service-cta">Manage Your Project →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Commercial Design</h3>
+          <p>Create inspiring work environments that reflect your brand identity and enhance productivity.</p>
+          <ul class="service-features">
+            <li>Office space planning & design</li>
+            <li>Brand integration & identity</li>
+            <li>Reception & common area design</li>
+            <li>Collaborative workspace design</li>
+            <li>Commercial compliance & safety</li>
+          </ul>
+          <a href="#contact" class="service-cta">Design Your Space →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🛋️</div>
+          <h3>Custom Furniture</h3>
+          <p>Bespoke furniture pieces crafted to perfectly fit your space, style, and functional requirements.</p>
+          <ul class="service-features">
+            <li>Custom furniture design</li>
+            <li>Material & fabric selection</li>
+            <li>Artisan craftsmanship</li>
+            <li>Quality control & finishing</li>
+            <li>Installation & placement</li>
+          </ul>
+          <a href="#contact" class="service-cta">Create Custom Pieces →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section portfolio">
+    <div class="section-content">
+      <h2 class="section-title">Our Portfolio 📸</h2>
+      <p class="section-subtitle">A curated collection of our recent projects showcasing diverse styles and exceptional craftsmanship</p>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Living Room">
+          <div class="portfolio-overlay">
+            <h3>Modern Oasis</h3>
+            <p>Residential / Dubai Hills</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/14738320/pexels-photo-14738320.jpeg" alt="Dining Area">
+          <div class="portfolio-overlay">
+            <h3>Elegant Dining</h3>
+            <p>Residential / Jumeirah</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1200&q=80" alt="Bedroom Interior">
+          <div class="portfolio-overlay">
+            <h3>Serene Retreat</h3>
+            <p>Residential / Downtown</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/3634740/pexels-photo-3634740.jpeg" alt="Luxury Office">
+          <div class="portfolio-overlay">
+            <h3>Executive Workspace</h3>
+            <p>Commercial / DIFC</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/30055620/pexels-photo-30055620.jpeg" alt="Studio Space">
+          <div class="portfolio-overlay">
+            <h3>Creative Studio</h3>
+            <p>Commercial / Al Quoz</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/4112618/pexels-photo-4112618.jpeg" alt="Modern Kitchen">
+          <div class="portfolio-overlay">
+            <h3>Gourmet Kitchen</h3>
+            <p>Residential / Palm Jumeirah</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section faq">
+    <div class="section-content">
+      <h2 class="section-title">Frequently Asked Questions ❓</h2>
+      <p class="section-subtitle">Everything you need to know about our design process and services</p>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">How long does a typical interior design project take? ⏱️</div>
+          <div class="faq-answer">
+            <p>The timeline varies based on project scope, but most residential projects take between 3-6 months from concept to completion. Commercial projects may take longer depending on size and complexity.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Do you work with clients on a budget? 💰</div>
+          <div class="faq-answer">
+            <p>Absolutely! We believe great design should be accessible. We work closely with clients to establish a realistic budget and provide creative solutions that maximize impact while respecting financial constraints.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What's your design process? 🎯</div>
+          <div class="faq-answer">
+            <p>Our process begins with an in-depth consultation to understand your vision, lifestyle, and preferences. We then develop concepts, create detailed plans, source materials, and manage the entire implementation process.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Do you handle renovations or only new spaces? 🔨</div>
+          <div class="faq-answer">
+            <p>We specialize in both! Whether you're starting from scratch or transforming an existing space, we have the expertise to handle renovations, remodels, and new construction projects.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Can you work with my existing furniture? 🛋️</div>
+          <div class="faq-answer">
+            <p>Yes! We love incorporating meaningful pieces into our designs. During our consultation, we'll assess your existing furniture and determine how to best integrate it with the new design concept.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="section-content">
+      <h2 class="section-title">Contact Us 📞</h2>
+      <p class="section-subtitle">Let's create something exceptional together. Reach out to discuss your project!</p>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-detail">
+            <span>📧</span>
+            <a href="mailto:hello@demowebsite.com">hello@demowebsite.com</a>
+          </div>
+          
+          <div class="contact-detail">
+            <span>📱</span>
+            <a href="tel:+971501234567">+971 50 123 4567</a>
+          </div>
+          
+          <div class="contact-detail">
+            <span>📍</span>
+            <span>Dubai Design District, UAE</span>
+          </div>
+          
+          <div class="contact-detail">
+            <span>🕒</span>
+            <span>Sun - Thu: 9:00 AM - 6:00 PM</span>
+          </div>
+        </div>
+
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="John Smith" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="john@example.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Project Type</label>
+            <input type="text" id="subject" placeholder="Residential, Commercial, etc.">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" placeholder="Tell us about your vision and requirements..." rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn">Send Message 📤</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© 2025 Demo Website — ✨ Designed with passion in Dubai ✨</p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(248, 245, 240, 0.95)';
+      } else {
+        header.style.background = 'rgba(248, 245, 240, 0.85)';
+      }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    
+    menuToggle.addEventListener('click', function() {
+      nav.classList.toggle('active');
+    });
+
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+
+    // Form submission
+    const contactForm = document.querySelector('.contact-form');
+    
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon. 📩');
+      contactForm.reset();
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
+  </script>
+  <script 
+  src="https://widgets.leadconnectorhq.com/loader.js"  
+  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
+ data-widget-id="6915b68e33e992e637a86a55"   > 
+ </script>
+</body>
+</html>
