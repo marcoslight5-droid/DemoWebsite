@@ -6,7 +6,7 @@
   <title>Demo Website | Interior Design Studio</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS (Embedded) -->
   <style>
@@ -32,7 +32,8 @@
 
     /* ---------- GLOBAL ---------- */
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    img, video { max-width: 100%; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -129,12 +130,17 @@
       color: var(--text-dark);
       font-size: 1.5rem;
       cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0;
     }
 
     /* ---------- HERO ---------- */
     .hero {
       position: relative;
-      height: 100vh;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 6rem 0 3rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -295,7 +301,7 @@
     /* ---------- SERVICES ---------- */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
       gap: 2.5rem;
       margin-top: 3rem;
       width: 100%;
@@ -414,7 +420,7 @@
     /* ---------- PORTFOLIO ---------- */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
       width: 100%;
@@ -472,6 +478,13 @@
       margin: 0;
       color: rgba(255,255,255,0.8);
       font-size: 0.9rem;
+    }
+
+    @media (hover: none) {
+      .portfolio-overlay {
+        transform: none;
+        opacity: 1;
+      }
     }
 
     /* ---------- FAQ ---------- */
@@ -597,6 +610,7 @@
       padding: 1rem;
       border-radius: var(--radius);
       font-family: inherit;
+      font-size: 1rem;
       transition: var(--transition);
       width: 100%;
     }
@@ -647,15 +661,19 @@
       
       .nav {
         position: fixed;
-        top: 70px;
+        top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(248, 245, 240, 0.95);
+        background: var(--bg-cream);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 1rem;
-        transform: translateY(-100%);
+        transform: translateY(-10px);
         opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
         transition: var(--transition);
         z-index: 999;
         gap: 0;
@@ -665,6 +683,8 @@
       .nav.active {
         transform: translateY(0);
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
       }
       
       .nav a {
@@ -686,6 +706,14 @@
       
       .section {
         padding: 4rem 0;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .portfolio-item {
+        height: 260px;
       }
       
       .btn-container {
@@ -755,7 +783,7 @@
     <div class="header-container">
       <a href="#top" class="logo">Demo Website</a>
       
-      <button class="menu-toggle" id="menuToggle">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">☰</button>
       
       <nav class="nav" id="nav">
         <a href="#about">About Us</a>
@@ -899,42 +927,42 @@
       <p class="section-subtitle">A curated collection of our recent projects showcasing diverse styles and exceptional craftsmanship</p>
       <div class="portfolio-grid">
         <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Living Room">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" loading="lazy" alt="Living Room">
           <div class="portfolio-overlay">
             <h3>Modern Oasis</h3>
             <p>Residential / Dubai Hills</p>
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="https://images.pexels.com/photos/14738320/pexels-photo-14738320.jpeg" alt="Dining Area">
+          <img src="https://images.pexels.com/photos/14738320/pexels-photo-14738320.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy" alt="Dining Area">
           <div class="portfolio-overlay">
             <h3>Elegant Dining</h3>
             <p>Residential / Jumeirah</p>
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1200&q=80" alt="Bedroom Interior">
+          <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1200&q=80" loading="lazy" alt="Bedroom Interior">
           <div class="portfolio-overlay">
             <h3>Serene Retreat</h3>
             <p>Residential / Downtown</p>
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="https://images.pexels.com/photos/3634740/pexels-photo-3634740.jpeg" alt="Luxury Office">
+          <img src="https://images.pexels.com/photos/3634740/pexels-photo-3634740.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy" alt="Luxury Office">
           <div class="portfolio-overlay">
             <h3>Executive Workspace</h3>
             <p>Commercial / DIFC</p>
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="https://images.pexels.com/photos/30055620/pexels-photo-30055620.jpeg" alt="Studio Space">
+          <img src="https://images.pexels.com/photos/30055620/pexels-photo-30055620.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy" alt="Studio Space">
           <div class="portfolio-overlay">
             <h3>Creative Studio</h3>
             <p>Commercial / Al Quoz</p>
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="https://images.pexels.com/photos/4112618/pexels-photo-4112618.jpeg" alt="Modern Kitchen">
+          <img src="https://images.pexels.com/photos/4112618/pexels-photo-4112618.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy" alt="Modern Kitchen">
           <div class="portfolio-overlay">
             <h3>Gourmet Kitchen</h3>
             <p>Residential / Palm Jumeirah</p>
@@ -1067,8 +1095,15 @@
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.getElementById('nav');
     
+    function setMenu(open) {
+      nav.classList.toggle('active', open);
+      menuToggle.setAttribute('aria-expanded', open);
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menuToggle.textContent = open ? '✕' : '☰';
+    }
+
     menuToggle.addEventListener('click', function() {
-      nav.classList.toggle('active');
+      setMenu(!nav.classList.contains('active'));
     });
 
     // FAQ accordion
@@ -1101,9 +1136,7 @@
 
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('active');
-      });
+      link.addEventListener('click', () => setMenu(false));
     });
   </script>
   <script 
